@@ -6,11 +6,11 @@ bind = "0.0.0.0:25565"
 
 # What should be the MOTD? This gets displayed when the player adds your server to
 # their server list. Only MiniMessage format is accepted.
-motd = "<#09add3>A Velocity Server"
+motd = "<#09add3>Unconfigured Velocity proxy server"
 
 # What should we display for the maximum number of players? (Velocity does not support a cap
 # on the number of players online.)
-show-max-players = 500
+show-max-players = 100
 
 # Should we authenticate players with Mojang? By default, this is on.
 online-mode = true
@@ -21,7 +21,7 @@ force-key-authentication = true
 # If client's ISP/AS sent from this proxy is different from the one from Mojang's
 # authentication server, the player is kicked. This disallows some VPN and proxy
 # connections but is a weak form of protection.
-prevent-client-proxy-connections = false
+prevent-client-proxy-connections = true
 
 # Should we forward IP addresses and other data to backend servers?
 # Available options:
@@ -34,11 +34,11 @@ prevent-client-proxy-connections = false
 #                  unable to implement network level firewalling (on a shared host).
 # - "modern":      Forward player IPs and UUIDs as part of the login process using
 #                  Velocity's native forwarding. Only applicable for Minecraft 1.13 or higher.
-player-info-forwarding-mode = "NONE"
+player-info-forwarding-mode = "modern"
 
 # If you are using modern or BungeeGuard IP forwarding, configure a file that contains a unique secret here.
 # The file is expected to be UTF-8 encoded and not empty.
-forwarding-secret-file = "forwarding.secret"
+forwarding-secret-file = "proxy-fwd.secret"
 
 # Announce whether or not your server supports Forge. If you run a modded server, we
 # suggest turning this on.
@@ -49,7 +49,7 @@ announce-forge = false
 
 # If enabled (default is false) and the proxy is in online mode, Velocity will kick
 # any existing player who is online if a duplicate connection attempt is made.
-kick-existing-players = false
+kick-existing-players = true
 
 # Should Velocity pass server list ping requests to a backend server?
 # Available options:
@@ -78,8 +78,7 @@ enable-player-address-logging = true
 # Configure your servers here. Each key represents the server's name, and the value
 # represents the IP address of the server to connect to.
 lobby = "127.0.0.1:30066"
-factions = "127.0.0.1:30067"
-minigames = "127.0.0.1:30068"
+lobby2 = "127.0.0.1:30067"
 
 # In what order we should try servers when a player logs in or is kicked from a server.
 try = [
@@ -91,11 +90,8 @@ try = [
 "lobby.example.com" = [
     "lobby"
 ]
-"factions.example.com" = [
-    "factions"
-]
-"minigames.example.com" = [
-    "minigames"
+"lobby2.example.com" = [
+    "lobby2"
 ]
 
 [advanced]
